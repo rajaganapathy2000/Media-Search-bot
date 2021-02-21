@@ -1,6 +1,6 @@
 import logging
 from pyrogram import Client, filters
-from info import USERBOT_STRING_SESSION, ADMINS, id_pattern
+from info import USERBOT_STRING_SESSION, API_ID, API_HASH, ADMINS, id_pattern
 from utils import save_file
 
 logger = logging.getLogger(__name__)
@@ -18,7 +18,7 @@ async def index_files(bot, message):
     else:
         msg = await message.reply('Processing...⏳')
         raw_data = message.command[1:]
-        user_bot = Client(USERBOT_STRING_SESSION)
+        user_bot = Client(USERBOT_STRING_SESSION, API_ID, API_HASH)
         chats = [int(chat) if id_pattern.search(chat) else chat for chat in raw_data]
         total_files = 0
 
